@@ -13,7 +13,7 @@ import {
 import { useCallback, useState } from 'react';
 import { PageHeader } from '../components/page-header';
 
-export default function Billing() {
+export default function EditEarn() {
   const [type, setType] = useState('dynamic');
   const [status, setStatus] = useState('active');
   const [value, setValue] = useState(5);
