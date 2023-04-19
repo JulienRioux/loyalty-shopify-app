@@ -9,6 +9,8 @@ import {
   TextField,
   Button,
   HorizontalStack,
+  Banner,
+  Divider,
 } from '@shopify/polaris';
 import { useCallback, useState } from 'react';
 import { PageHeader } from '../components/page-header';
@@ -56,7 +58,7 @@ export default function EditEarn() {
         <Layout>
           <Layout.Section>
             <PageHeader title="Order discount" showGoBack />
-            <VerticalStack gap="8">
+            <VerticalStack gap="4">
               <HorizontalGrid gap="4" columns={['twoThirds', 'oneThird']}>
                 <VerticalStack gap="4">
                   <AlphaCard>
@@ -116,7 +118,7 @@ export default function EditEarn() {
                     </VerticalStack>
                   </AlphaCard>
 
-                  <AlphaCard>
+                  <Banner status="info" hideIcon>
                     <VerticalStack vertical gap="4">
                       <Text fontWeight="bold" variant="headingMd">
                         Summary
@@ -124,7 +126,7 @@ export default function EditEarn() {
 
                       <Text color="subdued">{SUMMARY_TEXT}</Text>
                     </VerticalStack>
-                  </AlphaCard>
+                  </Banner>
                 </VerticalStack>
 
                 <VerticalStack gap="4">
@@ -154,6 +156,8 @@ export default function EditEarn() {
                   </AlphaCard>
                 </VerticalStack>
               </HorizontalGrid>
+
+              <Divider />
 
               <HorizontalStack align="end">
                 <Button type="submit" primary onClick={handleSave}>
