@@ -8,10 +8,12 @@ import {
   Divider,
   HorizontalGrid,
   Button,
+  HorizontalStack,
 } from '@shopify/polaris';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageHeader } from '../components/page-header';
+import { useCallback, useState } from 'react';
 
 export const UnstyledLink = styled(Link)`
   color: inherit;
@@ -35,11 +37,49 @@ const RewardSection = ({ title, description, cardTitle, cardDescription, editLin
 
           <Text color="subdued">{cardDescription}</Text>
 
-          <UnstyledLink to={editLink}>
-            <Button fullWidth size="slim">
-              Edit
+          <HorizontalStack align="end">
+            <UnstyledLink to={editLink}>
+              <Button fullWidth size="slim">
+                Edit
+              </Button>
+            </UnstyledLink>
+          </HorizontalStack>
+        </VerticalStack>
+      </AlphaCard>
+    </HorizontalGrid>
+  );
+};
+
+const StatusSection = () => {
+  const [isActive, setIsActive] = useState(true);
+
+  const handleStatusChange = useCallback(() => {
+    setIsActive(!isActive);
+  }, [isActive]);
+
+  return (
+    <HorizontalGrid gap="20" columns={2}>
+      <VerticalStack gap="4">
+        <Text fontWeight="bold" variant="headingMd">
+          Loyalty program status
+        </Text>
+
+        <Text>Activate or deactivate your loyalty program.</Text>
+      </VerticalStack>
+
+      <AlphaCard sectioned>
+        <VerticalStack gap="4">
+          <Text fontWeight="bold">Status</Text>
+
+          <Text color="subdued">
+            Your program is currently <strong>{isActive ? 'active' : 'inactive'}</strong>.
+          </Text>
+
+          <HorizontalStack align="end">
+            <Button size="slim" onClick={handleStatusChange}>
+              {isActive ? 'Deactivate' : 'Activate'}
             </Button>
-          </UnstyledLink>
+          </HorizontalStack>
         </VerticalStack>
       </AlphaCard>
     </HorizontalGrid>
@@ -74,6 +114,10 @@ export default function HomePage() {
                     cardDescription="100 Points = $1"
                     editLink="/edit-redeem"
                   />
+
+                  <Divider />
+
+                  <StatusSection />
                 </VerticalStack>
               </LegacyStack.Item>
             </LegacyStack>

@@ -11,7 +11,7 @@ const TitleWrapper = styled.div`
 `;
 
 const PageHeaderWrapper = styled.div`
-  margin: 8px 0 20px;
+  margin: 8px 0 32px;
 `;
 
 export const PageHeader = ({ title, showGoBack = false }) => {
@@ -21,10 +21,10 @@ export const PageHeader = ({ title, showGoBack = false }) => {
     <PageHeaderWrapper>
       <VerticalStack gap="4">
         <TitleWrapper>
-          <Text variant="heading2xl">{title}</Text>
+          <Text variant="headingXl">{title}</Text>
 
           {showGoBack && (
-            <Button size="slim" onClick={() => navigate(-1)} icon={ChevronLeftMinor}>
+            <Button size="slim" plain monochrome removeUnderline onClick={() => navigate(-1)} icon={ChevronLeftMinor}>
               Go back
             </Button>
           )}
